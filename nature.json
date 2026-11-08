@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cavi-au/Consent-O-Matic/master/rules.schema.json",
+  "Nature (Springer Nature CMP)": {
+    "detectors": [
+      {
+        "presentMatcher": [
+          {
+            "type": "url",
+            "url": "www.nature.com/"
+          },
+          {
+            "type": "css",
+            "target": {
+              "selector": "button.cc-banner__button-reject"
+            }
+          }
+        ],
+        "showingMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "button.cc-banner__button-reject",
+              "displayFilter": true
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "DO_CONSENT",
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "button.cc-banner__button-reject",
+            "textFilter": "Reject optional cookies",
+            "displayFilter": true
+          }
+        }
+      }
+    ]
+  }
+}

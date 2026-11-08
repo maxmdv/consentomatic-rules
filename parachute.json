@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cavi-au/Consent-O-Matic/master/rules.schema.json",
+  "Parachute Home (Fides)": {
+    "detectors": [
+      {
+        "presentMatcher": [
+          {
+            "type": "url",
+            "url": "parachutehome.com/"
+          },
+          {
+            "type": "css",
+            "target": {
+              "selector": "#fides-banner-container"
+            }
+          }
+        ],
+        "showingMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "#fides-banner-container[aria-hidden=\"false\"]"
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "DO_CONSENT",
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "#fides-reject-all-button"
+          }
+        }
+      }
+    ]
+  }
+}

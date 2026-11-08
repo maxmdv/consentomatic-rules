@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cavi-au/Consent-O-Matic/master/rules.schema.json",
+  "Antigravity (custom Cookiebot UI)": {
+    "detectors": [
+      {
+        "presentMatcher": [
+          {
+            "type": "url",
+            "url": "antigravity.tech"
+          },
+          {
+            "type": "css",
+            "target": {
+              "selector": "#CookieBanner"
+            }
+          }
+        ],
+        "showingMatcher": [
+          {
+            "type": "css",
+            "target": {
+              "selector": "#CookieBanner[data-modal-visible=\"true\"]",
+              "displayFilter": true
+            }
+          }
+        ]
+      }
+    ],
+    "methods": [
+      {
+        "name": "OPEN_OPTIONS",
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "#CookieBanner button",
+            "textFilter": "Cookie Settings",
+            "displayFilter": true
+          }
+        }
+      },
+      {
+        "name": "DO_CONSENT",
+        "action": {
+          "type": "list",
+          "actions": [
+            {
+              "type": "waitcss",
+              "target": {
+                "selector": "#CookieSetting[data-modal-visible=\"true\"]",
+                "displayFilter": true
+              },
+              "retries": 20,
+              "waitTime": 200
+            },
+            {
+              "type": "foreach",
+              "target": {
+                "selector": "#CookieSetting [class*=\"CookieSetting_listItem__\"]",
+                "childFilter": {
+                  "target": {
+                    "selector": "[class*=\"CookieSetting_optTitle__\"]",
+                    "textFilter": [
+                      "Functionality Cookies",
+                      "Analytical Cookies",
+                      "Marketing Cookies"
+                    ]
+                  }
+                }
+              },
+              "action": {
+                "type": "ifcss",
+                "target": {
+                  "selector": "button[class*=\"SwitcherBox_open__\"]"
+                },
+                "trueAction": {
+                  "type": "click",
+                  "target": {
+                    "selector": "button[class*=\"SwitcherBox_open__\"]"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "SAVE_CONSENT",
+        "action": {
+          "type": "click",
+          "target": {
+            "selector": "#CookieSetting button",
+            "textFilter": "Save My Settings",
+            "displayFilter": true
+          }
+        }
+      }
+    ]
+  }
+}

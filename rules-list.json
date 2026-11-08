@@ -1,0 +1,7 @@
+{
+  "references": [
+    "https://raw.githubusercontent.com/maxmdv/consentomatic-rules/main/parachute.json",
+    "https://raw.githubusercontent.com/maxmdv/consentomatic-rules/main/antigravity.json",
+    "https://raw.githubusercontent.com/maxmdv/consentomatic-rules/main/nature.json"
+  ]
+}
