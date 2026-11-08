@@ -6,12 +6,12 @@
         "presentMatcher": [
           {
             "type": "url",
-            "url": "www.nature.com/"
+            "url": "www.nature.com"
           },
           {
             "type": "css",
             "target": {
-              "selector": "button.cc-banner__button-reject"
+              "selector": "button[data-cc-action=\"reject\"]"
             }
           }
         ],
@@ -19,7 +19,7 @@
           {
             "type": "css",
             "target": {
-              "selector": "button.cc-banner__button-reject",
+              "selector": "button[data-cc-action=\"reject\"]",
               "displayFilter": true
             }
           }
@@ -32,8 +32,7 @@
         "action": {
           "type": "click",
           "target": {
-            "selector": "button.cc-banner__button-reject",
-            "textFilter": "Reject optional cookies",
+            "selector": "button[data-cc-action=\"reject\"]",
             "displayFilter": true
           }
         }
